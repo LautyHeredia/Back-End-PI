@@ -48,9 +48,11 @@ const videoGameSchema = new Schema(
   {
     name: {type: String, required: true},
     description: {type: String, required: true},
-    released: {type: String, required: true, default: "Unknown"},
+    released: {type: Date, required: true, default: "Unknown"},
     rating: {type: Number, required: true, default: 0},
     image: {type: String},
+    genres: [{type: Schema.Types.ObjectId, ref: "genres"}],
+    platforms: [{type: Schema.Types.ObjectId, ref: "platforms"}],
     createnInDb: {
       type: Boolean,
       default: true
@@ -58,7 +60,7 @@ const videoGameSchema = new Schema(
   },
   {
     versionKey: false,
-    timestamps: false
+    timestamps: true
   }
 )
 
